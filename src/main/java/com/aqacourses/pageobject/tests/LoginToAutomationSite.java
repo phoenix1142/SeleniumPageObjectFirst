@@ -1,5 +1,6 @@
 package com.aqacourses.pageobject.tests;
 
+import com.aqacourses.pageobject.pages.HomePage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import java.util.Collections;
 
 public class LoginToAutomationSite {
     private WebDriver driver;
+    private final String URL = "http://automationpractice.com/index.php";
 
     /**
      * setUp() method to create something
@@ -26,7 +28,9 @@ public class LoginToAutomationSite {
         // Initialize path to ChromeDriver
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
+        // Initialize instance of ChromeDriver and add options
         driver = new ChromeDriver(options);
+
         driver.manage().window().maximize();
     }
 
@@ -35,7 +39,9 @@ public class LoginToAutomationSite {
      */
     @Test
     public void testLoginToAutomationSite() {
-
+        driver.get(URL);
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignInLink();
     }
 
     /**
