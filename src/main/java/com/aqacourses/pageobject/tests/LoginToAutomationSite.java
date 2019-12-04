@@ -1,6 +1,7 @@
 package com.aqacourses.pageobject.tests;
 
 import com.aqacourses.pageobject.pages.HomePage;
+import com.aqacourses.pageobject.pages.SignInPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,6 +14,8 @@ import java.util.Collections;
 public class LoginToAutomationSite {
     private WebDriver driver;
     private final String URL = "http://automationpractice.com/index.php";
+    String emailAdress = "vanyaloboda.89@gmail.com";
+    String passwordValue = "12345";
 
     /**
      * setUp() method to create something
@@ -39,9 +42,14 @@ public class LoginToAutomationSite {
      */
     @Test
     public void testLoginToAutomationSite() {
+
         driver.get(URL);
+
         HomePage homePage = new HomePage(driver);
         homePage.clickSignInLink();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.register(emailAdress,passwordValue);
+
     }
 
     /**
