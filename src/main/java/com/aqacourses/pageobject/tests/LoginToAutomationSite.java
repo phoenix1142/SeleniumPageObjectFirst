@@ -1,5 +1,6 @@
 package com.aqacourses.pageobject.tests;
 
+import com.aqacourses.pageobject.pages.AccountPage;
 import com.aqacourses.pageobject.pages.HomePage;
 import com.aqacourses.pageobject.pages.SignInPage;
 import org.junit.After;
@@ -48,7 +49,12 @@ public class LoginToAutomationSite {
         HomePage homePage = new HomePage(driver);
         homePage.clickSignInLink();
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.register(emailAdress,passwordValue);
+        signInPage.register(emailAdress, passwordValue);
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.checkFioOnAccountPage();
+        accountPage.clickToSignOut();
+        signInPage.checkSignInPage();
+
 
     }
 

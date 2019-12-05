@@ -25,6 +25,7 @@ public class SignInPage extends AbstractPage {
 
     /**
      * constructor
+     *
      * @param driver
      */
     public SignInPage(WebDriver driver) {
@@ -33,16 +34,18 @@ public class SignInPage extends AbstractPage {
         wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(checkLoginPage));
     }
-/*
-click and enter some information to input field email
- */
+
+    /*
+    click and enter some information to input field email
+     */
     public SignInPage emailInput(String email) {
         this.email.sendKeys(email);
         return this;
     }
-/*
-click and enter some information to input field password
- */
+
+    /*
+    click and enter some information to input field password
+     */
     public SignInPage passwordInput(String password) {
         this.password.sendKeys(password);
         return this;
@@ -58,6 +61,7 @@ click and enter some information to input field password
 
     /**
      * authorization method on SignInPage
+     *
      * @param email
      * @param password
      * @return
@@ -68,7 +72,12 @@ click and enter some information to input field password
         clickSignInButton();
         return new AccountPage(driver);
     }
-
-
+/*
+checkSignInPage method
+ */
+    public SignInPage checkSignInPage() {
+        wait.until(ExpectedConditions.visibilityOf(checkLoginPage));
+        return this;
+    }
 
 }
